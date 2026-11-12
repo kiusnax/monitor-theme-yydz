@@ -393,6 +393,7 @@ export const COUNTRY_COORDINATES: Record<string, LatLng> = {
   MO: [113.55, 22.2],
   JP: [139.69, 35.69],
   KR: [126.98, 37.56],
+  KP: [125.75, 39.04],
   SG: [103.85, 1.29],
   MY: [101.69, 3.14],
   TH: [100.5, 13.75],

@@ -94,6 +94,15 @@ const geoB = resolveNodeGeo(mockNodeB, 0)
 assert.ok(geoB !== null)
 assert.equal(geoB.country, "DE")
 
+// KP 节点无城市线索时使用国家坐标，并出现在地区汇总中
+const mockNodeKP: Node = { ...mockNodeA, id: 3, name: "Node-01", country: "kp" }
+const geoKP = resolveNodeGeo(mockNodeKP)
+assert.ok(geoKP !== null)
+assert.equal(geoKP.country, "KP")
+assert.equal(geoKP.regionKey, "KP:KP")
+assert.deepEqual([geoKP.lng, geoKP.lat], [125.75, 39.04])
+assert.equal(summarizeRegions([mockNodeKP])[0]?.key, "KP:KP")
+
 // 4. 地区汇总测试
 const summary = summarizeRegions([mockNodeA, mockNodeB])
 assert.equal(summary.length, 2)
